@@ -4,13 +4,14 @@ import { IEvent } from "../models";
 import styled from "styled-components";
 import SingleEvent from "../components/SingleEvent";
 import Title from "../components/Title";
+
 export const loader = async () => {
   const response = await authFetch("/events");
   return response.data as IEvent[];
 };
 
 const Events = () => {
-  const data = useLoaderData();
+  const data: any = useLoaderData();
   const navigation = useNavigation();
   const events: IEvent[] = data.result;
   const isLoading = navigation.state === "loading";

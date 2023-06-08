@@ -5,13 +5,13 @@ import SingleContact from "../components/SingleContact";
 import styled from "styled-components";
 import Title from "../components/Title";
 
-export const loader = async ({ params: { id } }) => {
+export const loader = async ({ params: { id } }: any) => {
   const response = await authFetch(`/events/${id}/contacts`);
   return response.data.result as IContact[];
 };
 
 const Event = () => {
-  const contacts: IContact[] = useLoaderData();
+  const contacts: any | IContact[] = useLoaderData();
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
@@ -31,7 +31,7 @@ const Event = () => {
     <Wrapper>
       <Title title='Contacts' />
       <div className='contact-center'>
-        {contacts.map((contact, index) => {
+        {contacts.map((contact: IContact, index: number) => {
           return <SingleContact key={index} {...contact} />;
         })}
       </div>
