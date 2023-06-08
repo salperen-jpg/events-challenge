@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import { authFetch } from "../utils/authFetch";
 import { IContact } from "../models";
 import SingleContact from "../components/SingleContact";
@@ -7,12 +7,21 @@ import Title from "../components/Title";
 
 export const loader = async ({ params: { id } }) => {
   const response = await authFetch(`/events/${id}/contacts`);
-
   return response.data.result as IContact[];
 };
 
 const Event = () => {
   const contacts: IContact[] = useLoaderData();
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
+
+  if (isLoading) {
+    return (
+      <Wrapper>
+        <div className='loading'></div>
+      </Wrapper>
+    );
+  }
 
   if (contacts.length < 1) {
     return <h4>No registration has been found</h4>;
@@ -31,7 +40,7 @@ const Event = () => {
 };
 export default Event;
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   .contact-center {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

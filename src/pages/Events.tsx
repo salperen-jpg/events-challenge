@@ -13,7 +13,15 @@ const Events = () => {
   const data = useLoaderData();
   const navigation = useNavigation();
   const events: IEvent[] = data.result;
-  console.log(navigation);
+  const isLoading = navigation.state === "loading";
+
+  if (isLoading) {
+    return (
+      <Wrapper>
+        <div className='loading'></div>
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper>
@@ -28,7 +36,7 @@ const Events = () => {
 };
 export default Events;
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   .events-center {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
