@@ -17,6 +17,7 @@ export default Title;
 const Wrapper = styled.div`
   text-align: center;
   margin-bottom: 3rem;
+  font-family: var(--secondary-font);
   h2 {
     color: var(--grey-500);
   }
@@ -24,6 +25,6 @@ const Wrapper = styled.div`
     height: 0.25rem;
     width: 5rem;
     background: var(--primary-900);
-    margin: 1rem auto;
+    margin: 0.5rem auto;
   }
 `;
