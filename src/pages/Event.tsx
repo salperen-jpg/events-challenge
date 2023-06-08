@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData, useNavigation, Link } from "react-router-dom";
 import { authFetch } from "../utils/authFetch";
 import { IContact } from "../models";
 import SingleContact from "../components/SingleContact";
@@ -24,12 +24,22 @@ const Event = () => {
   }
 
   if (contacts.length < 1) {
-    return <h4>No registration has been found</h4>;
+    return (
+      <Wrapper>
+        <Link to='/events' className='btn back-btn'>
+          back events
+        </Link>
+        <h3>No registration has been found</h3>
+      </Wrapper>
+    );
   }
 
   return (
     <Wrapper>
       <Title title='Contacts' />
+      <Link to='/events' className='btn back-btn'>
+        back events
+      </Link>
       <div className='contact-center'>
         {contacts.map((contact: IContact, index: number) => {
           return <SingleContact key={index} {...contact} />;
@@ -45,5 +55,9 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
+  }
+  .back-btn {
+    display: inline-block;
+    margin-bottom: 2rem;
   }
 `;
