@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Error, Events, HomePage, Event } from "./pages";
+import { Error, Events, HomePage, Event, Registrations } from "./pages";
 import { loader as EventsLoader } from "./pages/Events";
 import { loader as SingleEventLoader } from "./pages/Event";
+import { loader as RegistrationsLoader } from "./pages/Registrations";
 import SharedLayout from "./pages/SharedLayout";
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,11 @@ function App() {
           path: "/events/:id",
           element: <Event />,
           loader: SingleEventLoader,
+        },
+        {
+          path: "/events/registrations/:id",
+          element: <Registrations />,
+          loader: RegistrationsLoader,
         },
       ],
     },
