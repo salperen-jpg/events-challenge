@@ -2,6 +2,8 @@
 
 This project is one of the implementation projects that reveals how to connect with authenticated API. The main purpose of the application is connecting exact API endpoints , fetching relevant data and showing them in appropriate format. User can be able to see the events that is available , see the contacts of it and registrations of the specific event.
 
+See this application in action : [Live](https://aanmelder-challenge.netlify.app/)
+
 **_Note_** : If you don't insert your token into headers you will get error from API.
 
 ##Technologies
