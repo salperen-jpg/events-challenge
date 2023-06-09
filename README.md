@@ -24,5 +24,5 @@ npm install
 npm run dev
 ```
 
-3. As mentioned earlier you have to get your token otherwise application will not the work as expected.
+3. As mentioned earlier you have to get your token otherwise application will not the work as expected. Create .env file in the source and name your variable **VITE_AUTH_TOKEN**
 4. Enjoy the app !
