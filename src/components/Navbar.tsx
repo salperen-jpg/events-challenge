@@ -1,12 +1,14 @@
 import NavbarLinks from "../utils/NavbarLinks";
 import styled from "styled-components";
 import logo from "../assets/logo.webp";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <Wrapper>
       <div className='section-center nav-center'>
-        <img src={logo} alt='aanmelder' className='logo' />
+        <Link to='/'>
+          <img src={logo} alt='aanmelder' className='logo' />
+        </Link>
         <div className='nav-links'>
           {NavbarLinks.map((link) => {
             const { id, text, url } = link;

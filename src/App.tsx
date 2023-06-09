@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Error, Events, HomePage, Event, Registrations } from "./pages";
 import { loader as EventsLoader } from "./pages/Events";
-import { loader as SingleEventLoader } from "./pages/Event";
+import { loader as SingleEventLoader } from "./pages/Contacts";
 import { loader as RegistrationsLoader } from "./pages/Registrations";
 import SharedLayout from "./pages/SharedLayout";
 function App() {

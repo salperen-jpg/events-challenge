@@ -106,6 +106,10 @@ a {
   background-color: var(--primary-50);
   color: var(--primary-900);
 }
+.back-btn {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
 
 h1 {
   font-size: 3rem;

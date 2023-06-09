@@ -29,7 +29,7 @@ const Event = () => {
         <Link to='/events' className='btn back-btn'>
           back events
         </Link>
-        <h3>No registration has been found</h3>
+        <h3>No contact has been found</h3>
       </Wrapper>
     );
   }
@@ -55,9 +55,5 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
-  }
-  .back-btn {
-    display: inline-block;
-    margin-bottom: 2rem;
   }
 `;

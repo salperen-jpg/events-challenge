@@ -18,7 +18,7 @@ const SingleEvent: React.FC<ISingleEvent> = ({
   const firstMoment = moment(first_day).format("MMMM do YYYY");
   const lastMoment = moment(last_day).format("MMMM do YYYY");
   const extractedID = self.split("/")[2];
-  console.log(extractedID);
+
   return (
     <Wrapper key={name}>
       <h3>{name}</h3>
@@ -28,17 +28,18 @@ const SingleEvent: React.FC<ISingleEvent> = ({
       <p className='date'>
         <FaCalendar className='icon' /> {firstMoment} - {lastMoment}
       </p>
-      <Link to={self} className='btn detailed-btn'>
-        contacts
-        <FaArrowRight />
-      </Link>
-      <Link
-        to={`/events/registrations/${extractedID}`}
-        className='btn detailed-btn'
-      >
-        registrations
-        <FaArrowRight />
-      </Link>
+      <div className='btn-container'>
+        <Link to={self} className='btn contact-btn'>
+          contacts
+        </Link>
+        <Link
+          to={`/events/registrations/${extractedID}`}
+          className='btn detailed-btn'
+        >
+          registrations
+          <FaArrowRight />
+        </Link>
+      </div>
     </Wrapper>
   );
 };
@@ -48,7 +49,7 @@ const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  align-items: flex-start;
+
   background: var(--white);
   border-left: 5px solid var(--primary-500);
   padding: 1.5rem;
@@ -74,6 +75,15 @@ const Wrapper = styled.article`
       color: var(--grey-500);
       font-size: 1.2rem;
     }
+  }
+  .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .contact-btn {
+    background-color: transparent;
   }
   .detailed-btn {
     display: flex;

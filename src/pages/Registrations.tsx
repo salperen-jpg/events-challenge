@@ -2,8 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import { authFetch } from "../utils/authFetch";
 import { IRegistration } from "../models";
 import Title from "../components/Title";
-import SingleRegistration from "../components/SingleRegistration";
 import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import Form from "../components/Form";
+import RegistrationsComp from "../components/RegistrationsComp";
 
 export const loader = async ({ params: { id } }: any) => {
   const response = await authFetch(`/events/${id}/regform/registrations`);
@@ -11,31 +14,23 @@ export const loader = async ({ params: { id } }: any) => {
 };
 
 const Registrations = () => {
-  const registrations: IRegistration[] | any = useLoaderData();
+  const data: IRegistration[] | any = useLoaderData();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [registrations, setRegistrations] = useState(data);
+
+  const filteredRegistrations = registrations.filter(
+    (registration: IRegistration) => registration.email.includes(searchTerm)
+  );
 
   return (
     <Wrapper>
       <Title title='Registrations' />
+      <Link to='/events' className='btn back-btn'>
+        back events
+      </Link>
+      <Form searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className='registration-center'>
-        <form className='form'>
-          <input type='text' name='' id='' placeholder='search for email...' />
-          <button type='submit' className='btn submit-btn'>
-            search
-          </button>
-        </form>
-        <div className='registrations'>
-          <h3>
-            {registrations.length} registration
-            {registrations.length > 1 ? "'s" : ""} found
-          </h3>
-          <div className='regis-center'>
-            {registrations.map((regis: IRegistration, index: number) => {
-              return (
-                <SingleRegistration key={regis.uuid} index={index} {...regis} />
-              );
-            })}
-          </div>
-        </div>
+        <RegistrationsComp filteredRegistrations={filteredRegistrations} />
       </div>
     </Wrapper>
   );
@@ -43,22 +38,14 @@ const Registrations = () => {
 export default Registrations;
 
 const Wrapper = styled.div`
-  .registration-center {
-    display: grid;
-    gap: 1.5rem;
-  }
-  @media (min-width: 900px) {
-    .registration-center {
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-    }
-  }
   h3 {
     margin-bottom: 1rem;
-    text-align: right;
   }
+
   .form {
-    width: 100%;
+    max-width: 30rem;
+    margin-inline: auto;
+    margin-bottom: 2rem;
     background-color: var(--white);
     padding: 1rem;
     border-radius: 10px;

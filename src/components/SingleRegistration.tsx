@@ -24,6 +24,7 @@ const Wrapper = styled.article`
   padding: 0.5rem;
   border-radius: 10px;
   position: relative;
+
   .number {
     position: absolute;
     top: 0;
