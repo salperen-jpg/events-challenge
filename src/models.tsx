@@ -31,3 +31,18 @@ export interface IContact {
   };
   self: string;
 }
+
+export interface IRegistration {
+  answers?: [];
+  checkin_qr_code: string;
+  checkin_timestamp: null | string;
+  created: string;
+  email: string;
+  invoices: [];
+  last_modified: string;
+  metadata: {};
+  registration_stat: string;
+  registration_timestamp: string;
+  self: string;
+  uuid: string;
+}

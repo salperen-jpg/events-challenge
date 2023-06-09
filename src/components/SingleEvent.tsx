@@ -17,6 +17,8 @@ const SingleEvent: React.FC<ISingleEvent> = ({
 }) => {
   const firstMoment = moment(first_day).format("MMMM do YYYY");
   const lastMoment = moment(last_day).format("MMMM do YYYY");
+  const extractedID = self.split("/")[2];
+  console.log(extractedID);
   return (
     <Wrapper key={name}>
       <h3>{name}</h3>
@@ -27,7 +29,14 @@ const SingleEvent: React.FC<ISingleEvent> = ({
         <FaCalendar className='icon' /> {firstMoment} - {lastMoment}
       </p>
       <Link to={self} className='btn detailed-btn'>
-        learn more
+        contacts
+        <FaArrowRight />
+      </Link>
+      <Link
+        to={`/events/registrations/${extractedID}`}
+        className='btn detailed-btn'
+      >
+        registrations
         <FaArrowRight />
       </Link>
     </Wrapper>
@@ -57,6 +66,7 @@ const Wrapper = styled.article`
   .date {
     font-weight: 600;
     letter-spacing: 1px;
+    font-size: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
