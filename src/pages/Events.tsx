@@ -40,7 +40,7 @@ export default Events;
 const Wrapper = styled.div`
   .events-center {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     gap: 1rem;
   }
 `;
